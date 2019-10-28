@@ -1,1 +1,1 @@
-# voting-system
+# Voting System based on Django
