@@ -3,6 +3,7 @@ venv/
 .idea/
 db.sqlite3
 */__pycache__/
+*/migrations/
 
 # Windows image file caches
 Thumbs.db
