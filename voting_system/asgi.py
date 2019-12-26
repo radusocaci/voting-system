@@ -1,5 +1,5 @@
 """
-ASGI config for voting_system project.
+ASGI config for voting project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
