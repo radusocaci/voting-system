@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'projects',
     'blog',
-    'register',
+    'users',
     'voting'
 ]
 
@@ -57,7 +57,7 @@ ROOT_URLCONF = 'voting_system.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'voting_system/templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'voting/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -77,8 +77,8 @@ WSGI_APPLICATION = 'voting_system.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'djongo',
+        'NAME': 'voting_system',
     }
 }
 
