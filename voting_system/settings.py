@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
+    'localflavor',
     'projects',
     'blog',
     'users',
@@ -124,3 +125,8 @@ CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 LOGIN_REDIRECT_URL = 'project_index'
 LOGIN_URL = 'login'
+
+GLOBAL_SETTINGS = {
+    'default_value': '',
+    'default_image': 'default.jpg'
+}
