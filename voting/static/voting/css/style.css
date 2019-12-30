@@ -20,11 +20,14 @@ ul {
 }
 
 .site-header .navbar-nav .nav-link {
-    color: #cbd5db;
+    color: #efefef;
+    font-size: large;
+
 }
 
 .site-header .navbar-nav .nav-link:hover {
-    color: #ffffff;
+    color: #f4f4f4;
+    font-size: large;
 }
 
 .site-header .navbar-nav .nav-link.active {
@@ -81,22 +84,24 @@ ul {
 .side-nav a{
   padding:10px 10px 10px 30px;
   text-decoration:none;
-  font-size:22px;
+  font-size:26px;
   color: #73ccc5;
   display:block;
   transition:0.3s;
 }
 
 .side-nav a:hover{
-  color:#fff;
+  color: #d1d1d1;
+    font-size: 35px;
 }
 
 .side-nav .btn-close{
   position:absolute;
   top:0;
   right:22px;
-  font-size:36px;
+  font-size:35px;
   margin-left:50px;
+    /*font-size: xx-large;*/
 }
 
 #main{

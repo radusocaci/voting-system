@@ -10,7 +10,7 @@ User._meta.get_field('email')._unique = True
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
-    cnp = models.CharField(max_length=13, default=settings.GLOBAL_SETTINGS.get('default_value'), unique=True)
+    cnp = models.CharField(max_length=13, default=settings.GLOBAL_SETTINGS.get('default_value'))
     id_series = models.CharField(max_length=2, default=settings.GLOBAL_SETTINGS.get('default_value'))
     id_number = models.CharField(max_length=6, default=settings.GLOBAL_SETTINGS.get('default_value'))
     issued_by = models.CharField(max_length=20, default=settings.GLOBAL_SETTINGS.get('default_value'))
