@@ -41,6 +41,7 @@ ul {
     border-radius: 3px;
     margin-bottom: 20px;
 }
+
 .navbar{
   background-color: #38988b;
   overflow:hidden;
@@ -55,6 +56,10 @@ ul {
   padding:14px 16px;
   text-decoration:none;
   font-size:17px;
+}
+
+.navbar p{
+    margin-top: 15px;
 }
 
 .navbar ul{
