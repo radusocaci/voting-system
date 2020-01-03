@@ -20,6 +20,7 @@ from django.contrib.auth import views as auth_views
 from django.urls import path, include
 
 from users import views as user_views
+from voting import views as voting_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -45,7 +46,8 @@ urlpatterns = [
     path('password-reset-complete/', auth_views.PasswordResetCompleteView.as_view(
         template_name='password-reset-complete.html'),
         name='password_reset_complete'
-    )
+    ),
+    path('about/', voting_views.about_page, name='about-page')
 ]
 
 if settings.DEBUG:
