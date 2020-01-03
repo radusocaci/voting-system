@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block title %}About Page{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="features-boxed">
+        <div class="container">
+            <div class="intro">
+                <h2 class="text-center">Why vote online?</h2>
+                <p class="text-center">Now it's easier than ever to excercise your democracy right and vote. You can do
+                    it right from the confort of your home!</p>
+            </div>
+            <div class="row justify-content-center features">
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div class="box"><i class="fa fa-map-marker icon" style="color: rgb(20,238,133);"></i>
+                        <h3 class="name">Works everywhere</h3>
+                        <p class="description">You can vote from anywhere in the world, without the pain of travelling
+                            to the nearest embassy</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div class="box"><i class="fa fa-clock-o icon" style="color: rgb(20,238,133);"></i>
+                        <h3 class="name">Always available</h3>
+                        <p class="description">You can vote at any time, as long as the chosen voting session is still
+                            available. Results can be seen anytime.</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div class="box"><i class="fa fa-lock icon" style="color: rgb(20,238,133);"></i>
+                        <h3 class="name">Secure</h3>
+                        <p class="description">Our platform employs a number of security measures to validate votes and
+                            disallow any kind of manipulation</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div class="box"><i class="fa fa-user-secret icon" style="color: rgb(20,238,133);"></i>
+                        <h3 class="name">Anonymous</h3>
+                        <p class="description">We promise you that your vote is completely confidential and cannot be
+                            decoded</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div class="box"><i class="fa fa-plane icon" style="color: rgb(20,238,133);"></i>
+                        <h3 class="name">Fast </h3>
+                        <p class="description">The vote is registered instantaneously. This gives us the ability ti
+                            generate partial results on spot.</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div class="box"><i class="fa fa-phone icon" style="color: rgb(20,238,133);"></i>
+                        <h3 class="name">Mobile-first</h3>
+                        <p class="description">Our platform is configured to run on mobile devices and PCs. All you need
+                            is a selfie camera.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="team-boxed">
+        <div class="container">
+            <div class="intro">
+                <h2 class="text-center">Team </h2>
+                <p class="text-center">The guys that made voting from home a reality. You are also a big part of our
+                    team, so go vote!</p>
+            </div>
+            <div class="row people">
+                <div class="col-md-6 col-lg-4 item">
+                    <div class="box"><img class="rounded-circle" src="../static/img/photo.jpeg">
+                        <h3 class="name">Radu Socaci</h3>
+                        <p class="title">DEveloper</p>
+                        <p class="description">Passionate developer and a strong beliver in democracy. Radu helped
+                            develop the voting system and secure the back-end, to make sure you have a flawless
+                            experience with us!</p>
+                        <div class="social"><a href="https://www.facebook.com/socaci.radu"><i
+                                class="fa fa-facebook-official"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a
+                                href="https://www.instagram.com/radusocaci/"><i class="fa fa-instagram"></i></a></div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 item">
+                    <div class="box"><img class="rounded-circle"
+                                          src="../static/img/32191140_1783302995059992_7996924072279670784_o.jpg">
+                        <h3 class="name">Lorena Neagu</h3>
+                        <p class="title">Developer/UX</p>
+                        <p class="description">Lorena is a passionate developer who decided to simplify the process of
+                            voting in a democratic country. This is how the voting system was born. She made sure the
+                            user experience is great!</p>
+                        <div class="social"><a href="https://www.facebook.com/loreneaguu"><i
+                                class="fa fa-facebook-official"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a
+                                href="https://www.instagram.com/loreee.n/"><i class="fa fa-instagram"></i></a></div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 item">
+                    <div class="box"><img class="rounded-circle" src="../static/img/3.jpg">
+                        <h3 class="name">You</h3>
+                        <p class="title">voter</p>
+                        <p class="description">You have the ability to choose what you want the future to be like.
+                            Without you, this voting system has no meaning and cannot change the future for the better.
+                            We need your vote!</p>
+                        <div class="social"><a href="#"><i class="fa fa-facebook-official"></i></a><a href="#"><i
+                                class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
