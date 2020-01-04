@@ -123,7 +123,7 @@ MEDIA_URL = '/media/'
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
-LOGIN_REDIRECT_URL = 'project_index'
+LOGIN_REDIRECT_URL = 'dashboard'
 LOGIN_URL = 'login'
 
 GLOBAL_SETTINGS = {
@@ -131,7 +131,7 @@ GLOBAL_SETTINGS = {
     'default_image': 'default.jpg'
 }
 
-SESSION_COOKIE_AGE = 15*60
+SESSION_COOKIE_AGE = 15 * 60
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'

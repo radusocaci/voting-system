@@ -1,29 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <div class="row row-cols-1 row-cols-md-2">
-      <div class="col mb-4">
-        <div class="card">
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col mb-4">
-        <div class="card">
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          </div>
-        </div>
-      </div>
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <style>
+        button {
+            width: 200px;
+            height: 50px;
+            font-size: 150px;
+        }
+
+        button span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+            font-family: inherit;
+            font-weight: bold;
+        }
+
+        button span:after {
+            content: '\00bb';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+        }
+
+        button:hover span {
+            padding-right: 25px;
+        }
+
+        button:hover span:after {
+            opacity: 1;
+            right: 0;
+        }
+    </style>
+    <div style=" text-align: center; margin-bottom: 40px; margin-top: 40px;">
+        <h1> {{ voting.name }} {{ voting.country }} {{ voting.year }}</h1></div>
+
+    <div class="card-deck">
+        {% for candidate in voting.candidates.all %}
+            <div class="card text-center">
+                <img height="300px" src="{{ candidate.image.url }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{ candidate.name }}</h5>
+                    <p class="card-text">{{ candidate.description }}</p>
+                    <a href="{% url 'vote' candidate.pk voting.pk %}">
+                        <button class="btn btn-primary"
+                                style=" font-family: inherit; border-color:#38988b; color: #f6f6f6; background-color: #38988b;">
+                            <span> VOTE </span>
+                        </button>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
     </div>
-</body>
-</html>
+{% endblock %}

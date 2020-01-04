@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Vote Now{% endblock %}
+
+{% block content %}
+    <style>
+        button {
+            width: 200px;
+            height: 50px;
+            font-size: 160px;
+            color: #38988b;
+            background-color: #38988b;
+
+        }
+
+        button span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+
+        button span:after {
+            content: '\00bb';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+        }
+
+        button:hover span {
+            padding-right: 25px;
+        }
+
+        button:hover span:after {
+            opacity: 1;
+            right: 0;
+        }
+    </style>
+    {#    <div class="highlight-clean"></div>#}
+    <div class="highlight-phone">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="intro">
+                        <h2>Welcome!</h2>
+                        <p>In order to be able to vote, you will need to create an account or log into an existing
+                            account! Your data will be checked and any fraud will be punished according to the law!<br>
+                        </p>
+                       <a href="#vote"><button class="btn btn-primary" role="button" >
+                            <span>
+                                Vote now
+                            </span>
+                        </button></a>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="d-none d-md-block iphone-mockup"><img class="device"
+                                                                      src="{% static 'img/iphone.svg' %}">
+                        <div class="screen"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="simple-slider" style="margin-top: 60px;">
+        <div class="swiper-container container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"
+                     style="background-image:url(../static/img/slideshow/60569646_286544018967833_1111229634294317056_n.jpg);"></div>
+                <div class="swiper-slide"
+                     style="background-image:url(../static/img/slideshow/72575348_432725740713857_2057685820394962944_n.jpg);"></div>
+                <div class="swiper-slide"
+                     style="background-image:url(../static/img/slideshow/82024372_524613851475852_6637436459169087488_n.jpg);"></div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </div>
+    <div class="article-list">
+        <div class="container" id="vote">
+            <div class="intro">
+                <h2 class="text-center">Active Voting Sessions</h2>
+                <p class="text-center">Create an account and start voting now. Your vote matters!</p>
+            </div>
+            <div class="row articles">
+                {% for session in dashboard %}
+                    <div class="col-sm-6 col-md-4 item" data-bs-hover-animate="bounce"><a
+                            href="{% url 'votedash' session.pk %}"><img
+                            class="img-fluid"
+                            src="{{ session.image.url }}"></a>
+                        <h3 class="name">{{ session.name }}</h3>
+                        <p class="description">{{ session.country }}, {{ session.year }}</p>
+                        <a
+                                class="action" href="#"><i class="fa fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="features-boxed"></div>
+{% endblock %}

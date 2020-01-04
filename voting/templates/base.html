@@ -9,10 +9,17 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
     <link rel="stylesheet" href="{% static 'fonts/font-awesome.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'voting/css/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/Features-Boxed.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/Team-Boxed.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Article-List.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Highlight-Clean.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Highlight-Phone.css' %}">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Simple-Slider.css' %}">
     <title>{% block title %}Voting System{% endblock %}</title>
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/apple-touch-icon.png' %}">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon-32x32.png' %}">
@@ -33,7 +40,7 @@
 
     </span>
         <div class="container">
-            <a class="navbar-brand" href="{% url 'project_index' %}" style="padding:0px;">
+            <a class="navbar-brand" href="{% url 'dashboard' %}" style="padding:0px;">
                 <img src="{% static 'img/icon.png' %}" width="60" height="60">
             </a>
             <p class="navbar-brand mr-4" style="color: #efefef; font-size:xx-large;">Voting System </p>
@@ -66,11 +73,9 @@
 
 <div id="side-menu" class="side-nav" onmouseenter="null" onmouseleave="closeSlideMenu()">
     <a href="#" class="btn-close" onclick="closeSlideMenu()">x</a>
-    <a href="{% url 'about-page' %}">About</a>
-    <a href="#">Vote</a>
-    <a href="#">Candidates</a>
+    <a href="{% url 'dashboard' %}">Vote</a>
     <a href="#">Results</a>
-    <a href="#">Events</a>
+    <a href="{% url 'about-page' %}">About</a>
     <a href="#">Contact</a>
 
 </div>
@@ -85,12 +90,16 @@
             {% endfor %}
         {% endif %}
     </div>
-    <div class="row">
-        {% block content %}{% endblock %}
-    </div>
+    {#    <div class="row">#}
+    {% block content %}{% endblock %}
+    {#    </div>#}
 </main>
 
 <script src="{% static 'voting/js/slidemenu.js' %}"></script>
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/bs-animation.js' %}"></script>
+<script src="{% static 'js/Simple-Slider.js' %}"></script>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -103,6 +112,9 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
+
+<script src="https://unpkg.com/swiper/js/swiper.js"></script>
+<script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
 
 </body>
 </html>
