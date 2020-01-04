@@ -13,6 +13,8 @@
             display: inline-block;
             position: relative;
             transition: 0.5s;
+            font-family: inherit;
+            font-weight: bold;
         }
 
         button span:after {
@@ -33,7 +35,8 @@
             right: 0;
         }
     </style>
-    <div class="mx-auto" ><h1> Romanian presidential election 2019</h1> </div>
+    <div style=" text-align: center; margin-bottom: 40px; margin-top: 40px;">
+        <h1> {{ voting.name }} {{ voting.country }} {{ voting.year }}</h1></div>
 
     <div class="card-deck">
         {% for candidate in voting.candidates.all %}
@@ -42,11 +45,12 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ candidate.name }}</h5>
                     <p class="card-text">{{ candidate.description }}</p>
-                    <button {#href="{% url 'project_detail' candidate.pk %}"#}
-                            class="btn btn-primary"
-                            style=" border-color:#38988b; color: #f6f6f6; background-color: #38988b;">
-                        <span> Vote </span>
-                    </button>
+                    <a href="{% url 'vote' candidate.pk voting.pk %}">
+                        <button class="btn btn-primary"
+                                style=" font-family: inherit; border-color:#38988b; color: #f6f6f6; background-color: #38988b;">
+                            <span> VOTE </span>
+                        </button>
+                    </a>
                 </div>
             </div>
         {% endfor %}
