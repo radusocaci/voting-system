@@ -1,10 +1,12 @@
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 
 from voting.models import VotingSession, VoteUser, Candidate
+from .forms import ContactForm
 
 
 def dashboard(request):
@@ -18,6 +20,24 @@ def votedash(request, pk):
 
 def about_page(request):
     return render(request, 'about.html', {})
+
+
+def contact_us(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            sender_name = form.cleaned_data['name']
+            sender_email = form.cleaned_data['email']
+            message = "{0} has sent you a new message:\n\n{1}".format(sender_name, form.cleaned_data['message'])
+            send_mail('Support Request', message, sender_email, [settings.EMAIL_HOST_USER])
+
+            messages.success(request, f'The message has been sent! We will contact you shortly.')
+
+            return redirect('contact')
+    else:
+        form = ContactForm()
+
+    return render(request, 'contact.html', {'form': form})
 
 
 def vote(request, candidate_id, voting_session_id):

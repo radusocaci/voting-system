@@ -48,7 +48,8 @@ urlpatterns = [
         template_name='password-reset-complete.html'),
         name='password_reset_complete'
     ),
-    path('about/', voting_views.about_page, name='about-page')
+    path('about/', voting_views.about_page, name='about-page'),
+    path('contact/', voting_views.contact_us, name='contact')
 ]
 
 if settings.DEBUG:
