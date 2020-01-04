@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Vote Now{% endblock %}
+
+{% block content %}
+    <div class="highlight-clean"></div>
+    <div class="highlight-phone">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="intro">
+                        <h2>Welcome!</h2>
+                        <p>In order to be able to vote, you will need to create an account or log into an existing
+                            account! Your data will be checked and any fraud will be punished according to the law!<br>
+                        </p><a class="btn btn-primary" role="button" href="#vote">Vote now</a></div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="d-none d-md-block iphone-mockup"><img class="device"
+                                                                      src="{% static 'img/iphone.svg' %}">
+                        <div class="screen"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="simple-slider" style="margin-top: 60px;">
+        <div class="swiper-container container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"
+                     style="background-image:url(https://cdn.bootstrapstudio.io/placeholders/1400x800.png);"></div>
+                <div class="swiper-slide"
+                     style="background-image:url(https://cdn.bootstrapstudio.io/placeholders/1400x800.png);"></div>
+                <div class="swiper-slide"
+                     style="background-image:url(https://cdn.bootstrapstudio.io/placeholders/1400x800.png);"></div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </div>
+    <div class="article-list">
+        <div class="container" id="vote">
+            <div class="intro">
+                <h2 class="text-center">Active Voting Sessions</h2>
+                <p class="text-center">Create an account and start voting now. Your vote matters!</p>
+            </div>
+            <div class="row articles">
+                {% for session in dashboard %}
+                    <div class="col-sm-6 col-md-4 item" data-bs-hover-animate="bounce"><a
+                            href="{% url 'votedash' session.pk%}"><img
+                            class="img-fluid"
+                            src="{{ session.image }}"></a>
+                        <h3 class="name">{{ session.name }}</h3>
+                        <p class="description">{{ session.country }}, {{ session.year }}</p>
+                        <a
+                                class="action" href="#"><i class="fa fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="features-boxed"></div>
+{% endblock %}

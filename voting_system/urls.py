@@ -25,6 +25,7 @@ from voting import views as voting_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('projects.urls')),
+    path('vote/', include('voting.urls')),
     path('projects/', include('projects.urls')),
     path('blog/', include('blog.urls')),
     path('register/', user_views.register, name='register'),
