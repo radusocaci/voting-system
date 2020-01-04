@@ -24,7 +24,7 @@ def vote(request, candidate_id, voting_session_id):
     if settings.GLOBAL_SETTINGS.get('default_image') in request.user.profile.image.path:
         return redirect('profile')
     else:
-        candidate = Candidate.objects.gecht(pk=candidate_id)
+        candidate = Candidate.objects.get(pk=candidate_id)
         voting_session = VotingSession.objects.get(pk=voting_session_id)
         rows = VoteUser.objects.filter(voting_session=voting_session, user=request.user)
 
