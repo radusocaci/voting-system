@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
-from voting.models import Candidate, VotingSession
+
+from voting.models import VotingSession
 
 
 def dashboard(request):

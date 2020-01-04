@@ -9,6 +9,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
     <link rel="stylesheet" href="{% static 'fonts/font-awesome.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'voting/css/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/Features-Boxed.css' %}">
@@ -39,7 +40,7 @@
 
     </span>
         <div class="container">
-            <a class="navbar-brand" href="{% url 'project_index' %}" style="padding:0px;">
+            <a class="navbar-brand" href="{% url 'dashboard' %}" style="padding:0px;">
                 <img src="{% static 'img/icon.png' %}" width="60" height="60">
             </a>
             <p class="navbar-brand mr-4" style="color: #efefef; font-size:xx-large;">Voting System </p>
@@ -91,9 +92,9 @@
             {% endfor %}
         {% endif %}
     </div>
-    <div class="row">
-        {% block content %}{% endblock %}
-    </div>
+    {#    <div class="row">#}
+    {% block content %}{% endblock %}
+    {#    </div>#}
 </main>
 
 <script src="{% static 'voting/js/slidemenu.js' %}"></script>

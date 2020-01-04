@@ -7,7 +7,7 @@ from django.db import models
 class Candidate(Model):
     name = CharField(max_length=100)
     description = TextField()
-    image = models.ImageField(upload_to='voting/static/img')
+    image = models.ImageField(upload_to='candidate_pics')
 
 
 class VotingSession(Model):
@@ -15,5 +15,5 @@ class VotingSession(Model):
     active = models.BooleanField(default=True)
     year = IntegerField()
     country = CharField(max_length=100)
-    image = models.ImageField(upload_to='voting/static/img')
+    image = models.ImageField(upload_to='voting_pics')
     candidates = models.ManyToManyField('Candidate', related_name='candidates')

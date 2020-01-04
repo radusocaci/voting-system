@@ -2,9 +2,11 @@
 
 {% block content %}
     <div class="border-top pt-3 mx-auto">
-        <h2>You have been logged out</h2>
-        <small class="text-muted">
-            <a href="{% url 'login' %}">Log In Again</a>
-        </small>
+        <h2 style="text-align: center">You have been logged out</h2>
+        <div style="text-align: center">
+            <small class="text-muted">
+                <a href="{% url 'login' %}">Log In Again</a>
+            </small>
+        </div>
     </div>
 {% endblock content %}

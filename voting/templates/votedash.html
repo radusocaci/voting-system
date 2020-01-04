@@ -36,9 +36,9 @@
     <div class="mx-auto" ><h1> Romanian presidential election 2019</h1> </div>
 
     <div class="card-deck">
-        {% for candidate in voting %}
+        {% for candidate in voting.candidates.all %}
             <div class="card text-center">
-                <img height="300px" src="{% static candidate.image %}" class="card-img-top" alt="...">
+                <img height="300px" src="{{ candidate.image.url }}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">{{ candidate.name }}</h5>
                     <p class="card-text">{{ candidate.description }}</p>
