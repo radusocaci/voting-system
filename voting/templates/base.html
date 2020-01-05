@@ -14,6 +14,8 @@
     <link rel="stylesheet" type="text/css" href="{% static 'voting/css/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/Features-Boxed.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/Team-Boxed.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Animated-Pretty-Product-List-1.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Animated-Pretty-Product-List.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/Article-List.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/Highlight-Clean.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/Highlight-Phone.css' %}">
@@ -72,7 +74,7 @@
 <div id="side-menu" class="side-nav" onmouseenter="null" onmouseleave="closeSlideMenu()">
     <a href="#" class="btn-close" onclick="closeSlideMenu()">x</a>
     <a href="{% url 'dashboard' %}">Vote</a>
-    <a href="#">Results</a>
+    <a href="{% url 'results_dashboard' %}">Results</a>
     <a href="{% url 'about-page' %}">About</a>
     <a href="{% url 'contact' %}">Contact</a>
 
@@ -96,6 +98,8 @@
 <script src="{% static 'js/jquery.min.js' %}"></script>
 <script src="{% static 'js/bs-animation.js' %}"></script>
 <script src="{% static 'js/Simple-Slider.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/Animated-Pretty-Product-List.js' %}"></script>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
