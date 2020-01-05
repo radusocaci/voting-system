@@ -13,6 +13,12 @@ def dashboard(request):
     return render(request, 'dashboard.html', {'dashboard': VotingSession.objects.filter(active=True)})
 
 
+def results_dashboard(request):
+    return render(request, 'results.html',
+                  {'active_sessions': VotingSession.objects.filter(active=True),
+                   'inactive_sessions': VotingSession.objects.filter(active=False)})
+
+
 @login_required
 def votedash(request, pk):
     return render(request, 'votedash.html', {'voting': get_object_or_404(VotingSession, pk=pk)})

@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+    <div class="containter">
+        <div class="jumbotron hero-technology">
+            <h1 class="hero-title">Voting Results</h1>
+            <p class="hero-subtitle">Here you can check the results of past voting sessions and even get a real time
+                preliminary result of the ongoing voting sessions</p>
+            <p><a class="btn btn-primary btn-lg hero-button" role="button" href="#live-results"
+                  style="background-color: rgb(14,179,119);border-color: rgb(14,179,119);">Live Results</a><a
+                    class="btn btn-primary btn-lg hero-button" role="button" href="#past-results"
+                    style="margin-left: 20px;background-color: rgba(0,123,255,0);color: rgb(0,0,0);border-color: rgb(14,179,119);">Past
+                Results</a></p>
+        </div>
+    </div>
+    <div class="article-list">
+        <div class="container">
+            <div class="intro">
+                <h2 class="text-center">Live Results</h2>
+                <p class="text-center">Here you can check out the preliminary results live. There is no need to wait
+                    until 9:00PM anymore!</p>
+            </div>
+            <div class="row articles" id="live-results">
+                {% if active_sessions.count == 0 %}
+                    <div class="content-section col-md-10 mx-auto"
+                         style="color: #38988b; border-color: #38988b; margin-left:300px; margin-top:100px;">
+                        <h3 style="text-align:center; color: #38988b; font-weight: bold;  ">
+                            There are no closed voting sessions at the moment!
+                        </h3>
+                    </div>
+                {% else %}
+                    {% for active_session in active_sessions %}
+                        <div class="col-sm-6 col-md-4 item" data-bs-hover-animate="bounce">
+                            <a href="#"><img class="img-fluid"
+                                             src="{{ active_session.image.url }}"></a>
+                            <h3 class="name">{{ active_session.name }}</h3>
+                            <p class="description">{{ active_session.country }}, {{ active_session.year }}</p>
+                            <a
+                                    class="action" href="#"><i class="fa fa-arrow-circle-right"></i>
+                            </a>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="article-list">
+        <div class="container">
+            <div class="intro">
+                <h2 class="text-center">Past Results</h2>
+                <p class="text-center">Every voting session is kept in the database, so you can always look back and
+                    improve!</p>
+            </div>
+            <div class="row articles" id="past-results">
+                {% if inactive_sessions.count == 0 %}
+                    <div class="content-section col-md-10 mx-auto"
+                         style="color: #38988b; border-color: #38988b; margin-left:300px; margin-top:100px;">
+                        <h3 style="text-align:center; color: #38988b; font-weight: bold;  ">
+                            There are no closed voting sessions at the moment!
+                        </h3>
+                    </div>
+                {% else %}
+                    {% for inactive_session in inactive_sessions %}
+                        <div class="col-sm-6 col-md-4 item" data-bs-hover-animate="bounce">
+                            <a href="#"><img class="img-fluid"
+                                             src="{{ inactive_session.image.url }}"></a>
+                            <h3 class="name">{{ inactive_session.name }}</h3>
+                            <p class="description">{{ inactive_session.country }}, {{ inactive_session.year }}</p>
+                            <a
+                                    class="action" href="#"><i class="fa fa-arrow-circle-right"></i>
+                            </a>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+    </div>
+    <div class="features-boxed"></div>
+{% endblock %}
