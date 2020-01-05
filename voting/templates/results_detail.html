@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ voting_session.name }}{% endblock %}
+
+{% block content %}
+    <div style=" text-align: center; margin-bottom: 60px; margin-top: 40px;">
+        <h1> {{ voting_session.name }} {{ voting_session.country }} {{ voting_session.year }}</h1></div>
+    <div style="margin-top: 30px;margin-bottom: 60px;">
+        <canvas data-bs-chart="{&quot;type&quot;:&quot;pie&quot;,&quot;data&quot;:{&quot;labels&quot;:{{ labels_chart }},&quot;datasets&quot;:[{&quot;label&quot;:&quot;Revenue&quot;,&quot;backgroundColor&quot;:[&quot;#4e73df&quot;,&quot;#32a852&quot;,&quot;#cf2555&quot;,&quot;#c6d124&quot;,&quot;#09deed&quot;,&quot;#da09ed&quot;],&quot;borderColor&quot;:[&quot;#4e73df&quot;,&quot;#32a852&quot;,&quot;#cf2555&quot;,&quot;#c6d124&quot;,&quot;#09deed&quot;,&quot;#da09ed&quot;],&quot;data&quot;:{{ data_chart }}}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:true,&quot;legend&quot;:{&quot;display&quot;:true,&quot;position&quot;:&quot;right&quot;,&quot;reverse&quot;:false},&quot;title&quot;:{&quot;display&quot;:false,&quot;position&quot;:&quot;top&quot;,&quot;text&quot;:&quot;{{ voting_session.name }}&quot;}}}"></canvas>
+    </div>
+    <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+        <tr>
+            <th>Candidate Name</th>
+            <th>Description</th>
+            <th>Number of votes</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for candidate in voting_session.candidates.all %}
+            <tr>
+                <td>{{ candidate.name }}</td>
+                <td>{{ candidate.description }}</td>
+                {% for vote in data %}
+                    {% if forloop.counter0 == forloop.parentloop.counter0 %}
+                        <td>{{ vote }}</td>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

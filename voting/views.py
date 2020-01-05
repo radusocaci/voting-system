@@ -14,14 +14,29 @@ def dashboard(request):
 
 
 def results_dashboard(request):
-    return render(request, 'results.html',
-                  {'active_sessions': VotingSession.objects.filter(active=True),
-                   'inactive_sessions': VotingSession.objects.filter(active=False)})
+    return render(request, 'results.html', {
+        'active_sessions': VotingSession.objects.filter(active=True),
+        'inactive_sessions': VotingSession.objects.filter(active=False)
+    })
 
 
 @login_required
 def votedash(request, pk):
     return render(request, 'votedash.html', {'voting': get_object_or_404(VotingSession, pk=pk)})
+
+
+def results_detail(request, pk):
+    voting_session = get_object_or_404(VotingSession, pk=pk)
+    labels, data = generate_statistics_and_context(voting_session)
+    labels_chart, data_chart = str(labels).replace("'", '"'), str(data).replace("'", '"')
+
+    return render(request, 'results_detail.html', {
+        'voting_session': voting_session,
+        'labels': labels,
+        'data': data,
+        'labels_chart': labels_chart,
+        'data_chart': data_chart
+    })
 
 
 def about_page(request):
@@ -62,3 +77,13 @@ def vote(request, candidate_id, voting_session_id):
             messages.warning(request, f'Your already voted in this election!')
 
         return redirect(reverse('votedash', kwargs={'pk': voting_session_id}))
+
+
+def generate_statistics_and_context(voting_session):
+    labels, data = [], []
+    votes = VoteUser.objects.all().filter(voting_session=voting_session)
+    for candidate in voting_session.candidates.all():
+        labels.append(candidate.name)
+        data.append(len(list(filter(lambda c: c.candidate_id == candidate.pk, votes))))
+
+    return labels, data

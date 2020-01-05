@@ -1,7 +1,8 @@
 {% extends "base.html" %}
-{% load static %}
-{% block content %}
 
+{% block title %}Results{% endblock %}
+
+{% block content %}
     <div class="containter">
         <div class="jumbotron hero-technology">
             <h1 class="hero-title">Voting Results</h1>
@@ -32,12 +33,13 @@
                 {% else %}
                     {% for active_session in active_sessions %}
                         <div class="col-sm-6 col-md-4 item" data-bs-hover-animate="bounce">
-                            <a href="#"><img class="img-fluid"
-                                             src="{{ active_session.image.url }}"></a>
+                            <a href="{% url 'results_detail' active_session.pk %}"><img class="img-fluid"
+                                                                                        src="{{ active_session.image.url }}"></a>
                             <h3 class="name">{{ active_session.name }}</h3>
                             <p class="description">{{ active_session.country }}, {{ active_session.year }}</p>
                             <a
-                                    class="action" href="#"><i class="fa fa-arrow-circle-right"></i>
+                                    class="action" href="{% url 'results_detail' active_session.pk %}"><i
+                                    class="fa fa-arrow-circle-right"></i>
                             </a>
                         </div>
                     {% endfor %}
@@ -63,19 +65,19 @@
                 {% else %}
                     {% for inactive_session in inactive_sessions %}
                         <div class="col-sm-6 col-md-4 item" data-bs-hover-animate="bounce">
-                            <a href="#"><img class="img-fluid"
-                                             src="{{ inactive_session.image.url }}"></a>
+                            <a href="{% url 'results_detail' inactive_session.pk %}"><img class="img-fluid"
+                                                                                          src="{{ inactive_session.image.url }}"></a>
                             <h3 class="name">{{ inactive_session.name }}</h3>
                             <p class="description">{{ inactive_session.country }}, {{ inactive_session.year }}</p>
                             <a
-                                    class="action" href="#"><i class="fa fa-arrow-circle-right"></i>
+                                    class="action" href="{% url 'results_detail' inactive_session.pk %}"><i
+                                    class="fa fa-arrow-circle-right"></i>
                             </a>
                         </div>
                     {% endfor %}
                 {% endif %}
             </div>
         </div>
-
     </div>
     <div class="features-boxed"></div>
 {% endblock %}
