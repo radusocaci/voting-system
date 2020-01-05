@@ -51,8 +51,6 @@
 
             <div class="collapse navbar-collapse" id="navbarToggle">
                 <div class="navbar-nav mr-auto">
-                    {#                    <a class="nav-item nav-link" href="{% url 'project_index' %}">Projects</a>#}
-                    {#                   <a class="nav-item nav-link" href="{% url 'blog_index' %}">Blog</a>#}
                 </div>
 
                 <!-- Navbar Right Side -->
@@ -76,7 +74,7 @@
     <a href="{% url 'dashboard' %}">Vote</a>
     <a href="#">Results</a>
     <a href="{% url 'about-page' %}">About</a>
-    <a href="#">Contact</a>
+    <a href="{% url 'contact' %}">Contact</a>
 
 </div>
 
@@ -90,9 +88,7 @@
             {% endfor %}
         {% endif %}
     </div>
-    {#    <div class="row">#}
     {% block content %}{% endblock %}
-    {#    </div>#}
 </main>
 
 <script src="{% static 'voting/js/slidemenu.js' %}"></script>
