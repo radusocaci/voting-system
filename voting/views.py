@@ -2,11 +2,14 @@ from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
+from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 
 from voting.models import VotingSession, VoteUser, Candidate
 from .forms import ContactForm
+
+from django.views.decorators.csrf import csrf_exempt
 
 
 def dashboard(request):
@@ -87,3 +90,20 @@ def generate_statistics_and_context(voting_session):
         data.append(len(list(filter(lambda c: c.candidate_id == candidate.pk, votes))))
 
     return labels, data
+
+
+@csrf_exempt
+def save_image(request):
+    if request.POST:
+        # save it somewhere
+        f = open(settings.MEDIA_ROOT + '/webcamimages/someimage.jpg', 'wb')
+        f.write(request.raw_post_data)
+        f.close()
+        # return the URL
+        HttpResponse('http://localhost:8080/voting/webcamimages/someimage.jpg')
+    else:
+        HttpResponse('no data')
+
+    return render(request, 'jpegcam_template.html', {})
+
+
