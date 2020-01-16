@@ -56,24 +56,27 @@
         <h1> {{ voting.name }} {{ voting.country }} {{ voting.year }}</h1>
     </div>
 
-    <button class="btn btn-outline-info mx-auto" style="position: sticky; left: 100%; margin-bottom: 50px;" onclick="take_snapshot()">
+    <button class="btn btn-outline-info mx-auto" style="position: sticky; left: 100%; margin-bottom: 50px;"
+            onclick="take_snapshot()">
         <span> VALIDATE VOTE </span>
     </button>
 
     <div class="card-deck">
         {% for candidate in voting.candidates.all %}
-            <div class="card text-center">
-                <img height="300px" src="{{ candidate.image.url }}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">{{ candidate.name }}</h5>
-                    <p class="card-text">{{ candidate.description }}</p>
-                    <a href="{% url 'vote' candidate.pk voting.pk %}">
-                        <button class="btn btn-primary"
-                                style=" font-family: inherit; border-color:#38988b; color: #f6f6f6; background-color: #38988b;"
-                        >
-                            <span> VOTE </span>
-                        </button>
-                    </a>
+            <div class="col-sm-6 col-md-6 item" style="margin-bottom: 50px;">
+                <div class="card text-center">
+                    <img height="300px" src="{{ candidate.image.url }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ candidate.name }}</h5>
+                        <p class="card-text">{{ candidate.description }}</p>
+                        <a href="{% url 'vote' candidate.pk voting.pk %}">
+                            <button class="btn btn-primary"
+                                    style=" font-family: inherit; border-color:#38988b; color: #f6f6f6; background-color: #38988b;"
+                            >
+                                <span> VOTE </span>
+                            </button>
+                        </a>
+                    </div>
                 </div>
             </div>
         {% endfor %}
