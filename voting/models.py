@@ -3,9 +3,6 @@ from django.db.models import *
 from django.db import models
 
 
-# Create your models here.
-
-
 class Candidate(Model):
     name = CharField(max_length=100)
     description = TextField()
