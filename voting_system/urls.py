@@ -48,7 +48,9 @@ urlpatterns = [
          name='password_reset_complete'
          ),
     path('about/', voting_views.about_page, name='about-page'),
-    path('contact/', voting_views.contact_us, name='contact')
+    path('contact/', voting_views.contact_us, name='contact'),
+    path('camera/save-image/', voting_views.save_image, name="save-image")
+
 ]
 
 if settings.DEBUG:

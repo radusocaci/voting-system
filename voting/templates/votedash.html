@@ -1,9 +1,16 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block title %}{{ voting.name }}{% endblock %}
 
 {% block content %}
+
     <style>
+        #my_camera {
+            width: 320px;
+            height: 240px;
+            border: 1px solid black;
+        }
+
         button {
             width: 200px;
             height: 50px;
@@ -37,8 +44,21 @@
             right: 0;
         }
     </style>
+
+    <div hidden id="my_camera"></div>
+
+    <form id="myform" method="post" action="/camera/save-image/">
+        <input id="mydata" type="hidden" name="mydata" value=""/>
+        <input id="voting_session" type="hidden" name="voting_session" value=""/>
+    </form>
+
     <div style=" text-align: center; margin-bottom: 40px; margin-top: 40px;">
-        <h1> {{ voting.name }} {{ voting.country }} {{ voting.year }}</h1></div>
+        <h1> {{ voting.name }} {{ voting.country }} {{ voting.year }}</h1>
+    </div>
+
+    <button class="btn btn-outline-info mx-auto" style="position: sticky; left: 100%; margin-bottom: 50px;" onclick="take_snapshot()">
+        <span> VALIDATE VOTE </span>
+    </button>
 
     <div class="card-deck">
         {% for candidate in voting.candidates.all %}
@@ -49,7 +69,8 @@
                     <p class="card-text">{{ candidate.description }}</p>
                     <a href="{% url 'vote' candidate.pk voting.pk %}">
                         <button class="btn btn-primary"
-                                style=" font-family: inherit; border-color:#38988b; color: #f6f6f6; background-color: #38988b;">
+                                style=" font-family: inherit; border-color:#38988b; color: #f6f6f6; background-color: #38988b;"
+                        >
                             <span> VOTE </span>
                         </button>
                     </a>
@@ -57,4 +78,29 @@
             </div>
         {% endfor %}
     </div>
+
+    <script type="text/javascript" src="{% static 'js/webcam.min.js' %}"></script>
+
+    <script language="JavaScript">
+        Webcam.set({
+            width: 320,
+            height: 240,
+            image_format: 'jpeg',
+            jpeg_quality: 90
+        });
+        Webcam.attach('#my_camera');
+
+        // code to handle taking the snapshot and displaying it locally
+        function take_snapshot() {
+
+            // take snapshot and get image data
+            Webcam.snap(function (data_uri) {
+                var raw_image_data = data_uri.replace(/^data\:image\/\w+\;base64\,/, '');
+
+                document.getElementById('mydata').value = raw_image_data;
+                document.getElementById('voting_session').value = {{ voting.pk }};
+                document.getElementById('myform').submit();
+            });
+        }
+    </script>
 {% endblock %}
