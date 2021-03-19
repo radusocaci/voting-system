@@ -9,7 +9,7 @@ dlib==19.19.0
 face-recognition==1.2.3
 face-recognition-models==0.3.0
 numpy==1.18.1
-Pillow==6.2.1
+Pillow==8.1.1
 pymongo==3.10.0
 python-stdnum==1.12
 pytz==2019.3
